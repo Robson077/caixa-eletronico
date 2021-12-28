@@ -1,0 +1,21 @@
+ul {
+    border: black 2px solid;
+    width: 150px;
+}
+#listaNome {
+    position: absolute;
+}
+
+#listaValor {
+    margin-left: 220px;
+}
+
+li{
+    list-style: none;
+    font-size: 20px;
+}
+
+#resultado {
+    font-size: 25px;
+    margin-left: 260px;
+}
