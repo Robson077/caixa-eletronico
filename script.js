@@ -20,9 +20,9 @@ function mostrarProdutos() {
     `
   })
   
-  bancoValor.forEach((valor, inde) => {
+  bancoValor.forEach((valor, index) => {
     outraLi = outraLi + `
-      <li>Valor: ${valor}</li>
+      <li>Valor: ${valor} <i class="fas fa-trash" onclick="apagarIndex(${index})"></i></li>
     `
   })
 
@@ -31,13 +31,21 @@ function mostrarProdutos() {
 }
 
 function add() {
-  bancoProdutos.push(String(nomeDoProduto.value))
-  bancoValor.push(Number(valorDoProduto.value))
+  if (nomeDoProduto.value && valorDoProduto.value) {
+    bancoProdutos.push(String(nomeDoProduto.value))
+    bancoValor.push(Number(valorDoProduto.value))
+    mostrarProdutos()
+    
+  }
 
+  else {
+    alert("PRENCHA TODOS OS CAMPOS")
+  }
+  
   nomeDoProduto.value = ""
   valorDoProduto.value = ""
-
-  mostrarProdutos()
+  
+  troca.innerHTML = ""
 }
 
 
@@ -60,6 +68,13 @@ function apagar() {
   listaValor.innerHTML = ""
 
   troca.innerHTML = "Compra deletada"
+}
+
+function apagarIndex(index) {
+  bancoProdutos.splice(index, 1)
+  bancoValor.splice(index, 1)
+
+  mostrarProdutos()
 }
 
 function addEnter(teclas) {
