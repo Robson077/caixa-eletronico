@@ -58,12 +58,17 @@ button {
 #divUl {
     margin-left: 35%;
     background-color: #FFFFFF;
+    border-radius: 6px;
     width: 345px;
+    
 }
 
 i {
     cursor: pointer;
-    position: relative;
+    position: absolute;
+    right: 30px;
+    top: 0;
+    padding-top: 2px;
 }
 
 button:active {
@@ -73,6 +78,7 @@ button:active {
 ul {
     width: 150px;
 }
+
 #listaNome {
     position: absolute;
     margin-left: 10px;
@@ -85,6 +91,7 @@ ul {
 li{
     list-style: none;
     font-size: 20px;
+    position: relative;
 }
 
 #resultado {

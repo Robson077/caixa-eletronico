@@ -2,85 +2,86 @@ let nomeDoProduto = document.getElementById("nome");
 
 let valorDoProduto = document.getElementById("valor");
 
-let listaNome = document.getElementById("listaNome")
+let listaNome = document.getElementById("listaNome");
 
-let listaValor = document.getElementById("listaValor")
+let listaValor = document.getElementById("listaValor");
 
 let troca = document.getElementById("resultado");
 
-let bancoProdutos = []
-let bancoValor = []
+let arrayProdutos = [];
+let arrayValor = [];
 
 function mostrarProdutos() {
-  novaLi = ""
-  outraLi = ""
-  bancoProdutos.forEach((produto, index) => {
-    novaLi = novaLi + `
+  novaLi = "";
+  outraLi = "";
+  arrayProdutos.forEach((produto, index) => {
+    novaLi =
+      novaLi +
+      `
       <li>Nome: ${produto}</li>
-    `
-  })
-  
-  bancoValor.forEach((valor, index) => {
-    outraLi = outraLi + `
-      <li>Valor: ${valor} <i class="fas fa-trash" onclick="apagarIndex(${index})"></i></li>
-    `
-  })
+    `;
+  });
 
-  listaNome.innerHTML = novaLi
-  listaValor.innerHTML = outraLi
+  arrayValor.forEach((valor, index) => {
+    outraLi =
+      outraLi +
+      `
+      <li>Valor: ${valor} <i class="fas fa-trash" onclick="apagarIndex(${index})"></i></li>
+    `;
+  });
+
+  listaNome.innerHTML = novaLi;
+  listaValor.innerHTML = outraLi;
 }
 
 function add() {
   if (nomeDoProduto.value && valorDoProduto.value) {
-    bancoProdutos.push(String(nomeDoProduto.value))
-    bancoValor.push(Number(valorDoProduto.value))
-    mostrarProdutos()
-    
+    arrayProdutos.push(String(nomeDoProduto.value));
+    arrayValor.push(Number(valorDoProduto.value));
+    mostrarProdutos();
+  } else {
+    alert("PREENCHA TODOS OS CAMPOS!!");
   }
 
-  else {
-    alert("PRENCHA TODOS OS CAMPOS")
-  }
-  
-  nomeDoProduto.value = ""
-  valorDoProduto.value = ""
-  
-  troca.innerHTML = ""
+  nomeDoProduto.value = "";
+  valorDoProduto.value = "";
+
+  troca.innerHTML = "";
 }
 
-
 function fechar() {
-  const total = bancoValor.reduce((total, valor) => total + valor, 0);
+  const total = arrayValor.reduce((total, valor) => total + valor, 0);
 
   troca.innerHTML = `Total: ${total.toLocaleString("pt-br", {
     style: "currency",
     currency: "BRL",
-  })}`
+  })}`;
 }
 
 function apagar() {
-  while(bancoProdutos.length && bancoValor.length){
-    bancoProdutos.pop()
-    bancoValor.pop()
+  while (arrayProdutos.length && arrayValor.length) {
+    arrayProdutos.pop();
+    arrayValor.pop();
   }
 
-  listaNome.innerHTML = ""
-  listaValor.innerHTML = ""
+  listaNome.innerHTML = "";
+  listaValor.innerHTML = "";
 
-  troca.innerHTML = "Compra deletada"
+  troca.innerHTML = "Compra deletada";
 }
 
 function apagarIndex(index) {
-  bancoProdutos.splice(index, 1)
-  bancoValor.splice(index, 1)
+  arrayProdutos.splice(index, 1);
+  arrayValor.splice(index, 1);
+  fechar()
 
-  mostrarProdutos()
+  mostrarProdutos();
 }
 
 function addEnter(teclas) {
-  if (teclas.key === "Enter"){
-    add()
+  if (teclas.key === "Enter") {
+    add();
   }
 }
 
-document.addEventListener("keypress", addEnter)
+document.addEventListener("keypress", addEnter);
