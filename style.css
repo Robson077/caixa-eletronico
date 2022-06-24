@@ -55,6 +55,10 @@ button {
     margin-left: 30%;
 }
 
+.btnsOperacoes {
+    box-shadow: 3px 6px 11px 3px #000000;
+}
+
 #divUl {
     margin-left: 35%;
     background-color: #FFFFFF;
@@ -99,3 +103,4 @@ li{
     margin-left: 90px;
     margin-top: 20px;
 }
+
